@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .centered {
+            text-align: center;
+        }
+        form {
+            background-color: #5bbddd;
+            padding: 30px;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(82, 98, 110, 0.2);
+        }
+        input[type="text"], input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #180b0b;
+            border-radius: 5px;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #100202;
+            box-shadow: 0 0 10px rgba(0,0,0.2,0.2);
+        }
+        input[type="button"], input[type="submit"] {
+            padding: 10px 12px;
+            background-color: #f8fbfd;
+            color: rgb(16, 16, 16);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        label {
+            display: inline-flex;
+            margin-bottom: 5px;
+        }
+        h3 {
+            font-family: Verdana,'Trebuchet MS';
+            color: #1c0e0e;
+        }
+        #message {
+            color: red; /* Default message color */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="centered">
+        <h3>Enter Your Username and Password:</h3>
+        <form id="loginpage">
+            <p>Username:
+                <input type="text" id="username" name="username" required />
+            </p>
+            <p>Password:
+                <input type="password" id="password" name="password" required />
+            </p>
+            <input type="button" id="signInBtn" value="Sign In" />
+            <input type="button" id="loginBtn" value="Login" />
+            <p id="message"></p>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById("signInBtn").addEventListener("click", function() {
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let message = document.getElementById("message");
+        if (username === "" || password === "") {
+            message.textContent = "Fill the box!";
+            return;
+        }
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+        message.style.color = "green";
+        message.textContent = "Sign In successful! You can now log in.";
+    });
+    document.getElementById("loginBtn").addEventListener("click", function() {
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let message = document.getElementById("message");
+        if (username === "" || password === "") {
+            message.textContent = "Fill the box!";
+            return;
+        }
+        if (localStorage.getItem("username") === username && localStorage.getItem("password") === password) {
+            message.style.color = "green";
+            message.textContent = "Login successful!";
+            setTimeout(function() {
+                window.location.href = "nextPage.html"; 
+            }, 1000);
+        } else {
+            message.style.color = "red";
+            message.textContent = "Invalid username or password!";
+        }
+    });
+</script>
+</body>
+</html>
