@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: skyblue;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .box {
+            border: 2px solid black;
+            padding: 20px;
+            width: 200px;
+            margin: 15px auto;
+            border-radius: 15px;
+            background-color: white;
+            font-weight: bold;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" onclick="navigateTo('physics.html')">Physics</div>
+        <div class="box" onclick="navigateTo('chemistry.html')">Chemistry</div>
+        <div class="box" onclick="navigateTo('civil.html')">Civil</div>
+        <div class="box" onclick="navigateTo('mechanical.html')">Mechanical</div>
+    </div>
+    
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
